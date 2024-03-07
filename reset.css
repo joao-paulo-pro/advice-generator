@@ -3,13 +3,11 @@
 *:before {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
     box-sizing: border-box;
     text-decoration: none;
     font-family: "Manrope", sans-serif;
 }
 body{
-    margin: 0;
     font-size: 100%;
     list-style-type: none;
 }

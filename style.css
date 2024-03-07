@@ -1,4 +1,4 @@
-@import url("/style/reset.css");
+@import url("/reset.css");
 
 :root {
     --cor-fundo: rgb(31, 39, 50);
@@ -25,6 +25,7 @@ body {
 
 .container {
     margin: 10px;
+
     position: relative;
     padding: 0 48px;
     display: flex;

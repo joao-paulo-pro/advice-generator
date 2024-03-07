@@ -3,59 +3,45 @@ const advice_number = document.querySelector("#advice_number");
 const btn = document.querySelector("#btn");
 const loadingSpan = document.querySelector("#loading");
 
-const apiUrl = "https://api.adviceslip.com/advice"
 
-async function geradorDeConselho() {
-    try {
-        const conselho = await fetch(apiUrl);
-        const data = await conselho.json();
-        
-        return data;
-        
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-function loading() {
-    advice_text.textContent = "Carregando..."
-    advice_number.textContent = "..."
-
-}
-
-function addSpan () {
+const loadingAdd = () => {
     loadingSpan.classList.add("loading")
+    advice_text.textContent = "Carregando...";
+    advice_number.textContent = "...";
 }
 
-function removeSpan() {
+const loadingRemove = () => {
     loadingSpan.classList.remove("loading")
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    loading()
-    addSpan()
-    try {
-        const mensagem = await geradorDeConselho()
-        removeSpan()
-        advice_text.textContent = `"${mensagem.slip.advice}"`
-        advice_number.textContent = mensagem.slip.id;
-    } catch (error) {
-        advice_text.textContent = "Sem mensagem :(";
-    }
-} )
+const apiAdvice = async () => {
 
-btn.addEventListener("click", async (event) => {
-    event.preventDefault();
-    loading()
-    addSpan()
-    console.log(event)
+    loadingAdd()
+
     try {
-        const mensagem = await geradorDeConselho()
-        removeSpan()
-        advice_text.textContent = `"${mensagem.slip.advice}"`
-        advice_number.textContent = mensagem.slip.id;
+        const apiUrl = fetch("https://api.adviceslip.com/advice")
+        .then( (res) => res.json())
+        .then( (data) => data.slip )
+
+        const rusult = await apiUrl
+        const texto = rusult.advice;
+        const id = rusult.id
+
+        loadingRemove()
+        
+        advice_text.textContent = texto;
+        advice_number.textContent = id;
+        
     } catch (error) {
-        advice_text.textContent = "Sem mensagem :(";
-    }
+        loadingRemove()
+        console.log(error);
+        advice_text.textContent = "Algo deu Errado :(";
+        advice_number.textContent = "...";}
+
+}
+
+apiAdvice();
+
+btn.addEventListener("click", () => {
+     apiAdvice();
 })
-
