@@ -1,0 +1,103 @@
+@import url("/style/reset.css");
+
+:root {
+    --cor-fundo: rgb(31, 39, 50);
+    --cor-container: rgb(49, 58, 73);
+    --verde: rgb(83, 255, 169);
+    --cor-texto: rgb(206, 227, 232);
+}
+
+.attribution {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    margin: 10px;
+    position: relative;
+    padding: 0 48px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-container);
+    max-width: 540px;
+    min-height: 330px;   
+    border-radius: 20px;
+}
+
+.container_advice_generator {
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.advice {
+    color: var(--verde);
+    font-size: 14px;
+    padding: 35px 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.advice_text {
+    color: var(--cor-texto);
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+.advice_img {
+    max-width: 100%;
+    padding: 40px 0;
+    content: url("/images/pattern-divider-desktop.svg");
+}
+
+.btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--verde);
+    width: 64px;
+    height: 64px;
+    bottom: -32px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    box-shadow: var(--verde) 0px 0px 10px  5px;
+}
+
+.loading {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 485px) {
+
+    .container {
+        padding: 0 25px;
+    }
+    
+    .advice_img {
+        content: url("/images/pattern-divider-mobile.svg");
+    }
+}
