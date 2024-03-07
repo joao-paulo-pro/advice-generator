@@ -62,7 +62,7 @@ body {
 .advice_img {
     max-width: 100%;
     padding: 40px 0;
-    content: url("/images/pattern-divider-desktop.svg");
+    content: url("./images/pattern-divider-desktop.svg");
 }
 
 .btn {
@@ -99,6 +99,6 @@ body {
     }
     
     .advice_img {
-        content: url("/images/pattern-divider-mobile.svg");
+        content: url("./images/pattern-divider-mobile.svg");
     }
 }
